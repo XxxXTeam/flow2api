@@ -1,18 +1,26 @@
+# Flow2API Configuration
+
 [global]
-api_key = "han1234"
+api_key = "flow2api"
 admin_username = "admin"
-admin_password = "admin"
+admin_password = "admin123"
+
+[server]
+host = "0.0.0.0"
+port = 8000
 
 [flow]
 labs_base_url = "https://labs.google/fx/api"
 api_base_url = "https://aisandbox-pa.googleapis.com/v1"
 timeout = 120
+max_retries = 3
 poll_interval = 3.0
-max_poll_attempts = 200
+max_poll_attempts = 500
 
-[server]
-host = "0.0.0.0"
-port = 8000
+[cache]
+enabled = false
+timeout = 7200
+base_url = ""
 
 [debug]
 enabled = false
@@ -20,23 +28,15 @@ log_requests = true
 log_responses = true
 mask_token = true
 
-[proxy]
-proxy_enabled = false
-proxy_url = ""
-
 [generation]
 image_timeout = 300
 video_timeout = 1500
 
-[admin]
-error_ban_threshold = 3
-
-[cache]
-enabled = false
-timeout = 7200  # 缓存超时时间(秒), 默认2小时
-base_url = ""   # 缓存文件访问的基础URL, 留空则使用服务器地址
-
 [captcha]
-captcha_method = "browser"  # 打码方式: yescaptcha 或 browser
-yescaptcha_api_key = ""  # YesCaptcha API密钥
+captcha_method = "browser"  # browser, personal, or yescaptcha
+yescaptcha_api_key = ""
 yescaptcha_base_url = "https://api.yescaptcha.com"
+website_key = "6LdsFiUsAAAAAIjVDZcuLhaHiDn5nnHVXVRQGeMV"
+page_action = "FLOW_GENERATION"
+browser_proxy_enabled = false
+browser_proxy_url = ""
